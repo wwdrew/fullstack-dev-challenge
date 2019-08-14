@@ -23,10 +23,8 @@ class App extends Component {
     this.setState({ monthlySaving });
   }
 
-  handleInterest = ({ target }) => {
-    const { value } = target;
-
-    this.setState({ interest: parseFloat(value) });
+  handleInterest = (interest) => {
+    this.setState({ interest });
   }
 
   render() {

@@ -11,7 +11,7 @@ const SliderInput = ({ onChange, value = 4 }) => (
       min={0}
       max={10}
       step={0.25}
-      onChange={onChange}
+      onChange={(e) => onChange(parseFloat(e.target.value))}
     />
   </div>
 );
