@@ -22,19 +22,27 @@ class App extends Component {
   }
 
   handleAlreadySaved = alreadySaved => {
-    this.setState({ alreadySaved });
+    this.setState({ alreadySaved }, () => {
+      this.getDataCalculation();
+    });
   };
 
   handleMonthlySaving = monthlySaving => {
-    this.setState({ monthlySaving });
+    this.setState({ monthlySaving }, () => {
+      this.getDataCalculation();
+    });
   };
 
   handleInterest = interest => {
-    this.setState({ interest });
+    this.setState({ interest }, () => {
+      this.getDataCalculation();
+    });
   };
 
   handleInterestPeriod = interestPeriod => {
-    this.setState({ interestPeriod });
+    this.setState({ interestPeriod }, () => {
+      this.getDataCalculation();
+    });
   };
 
   async getDataCalculation() {
