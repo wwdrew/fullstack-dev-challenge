@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import CurrencyInput from "./components/CurrencyInput";
 import SliderInput from "./components/SliderInput";
 import DisplayGraph from "./components/DisplayGraph";
+import InterestPeriodSelect from "./components/InterestPeriodSelect";
+
 import "./App.css";
 
 class App extends Component {
@@ -12,23 +14,33 @@ class App extends Component {
       alreadySaved: 0,
       monthlySaving: 0,
       interest: 4,
+      interestPeriod: "monthly"
     };
   }
 
-  handleAlreadySaved = (alreadySaved) => {
+  handleAlreadySaved = alreadySaved => {
     this.setState({ alreadySaved });
-  }
+  };
 
-  handleMonthlySaving = (monthlySaving) => {
+  handleMonthlySaving = monthlySaving => {
     this.setState({ monthlySaving });
-  }
+  };
 
-  handleInterest = (interest) => {
+  handleInterest = interest => {
     this.setState({ interest });
-  }
+  };
+
+  handleInterestPeriod = interestPeriod => {
+    this.setState({ interestPeriod });
+  };
 
   render() {
-    const { alreadySaved, interest, monthlySaving } = this.state;
+    const {
+      alreadySaved,
+      interest,
+      interestPeriod,
+      monthlySaving
+    } = this.state;
 
     return (
       <div className="App">
@@ -37,15 +49,27 @@ class App extends Component {
         </div>
         <div className="financial-inputs">
           <p className="input-label">How much have you saved?</p>
-          <CurrencyInput value={alreadySaved} onChange={this.handleAlreadySaved} />
+          <CurrencyInput
+            value={alreadySaved}
+            onChange={this.handleAlreadySaved}
+          />
 
           <p className="input-label">How much will you save each month?</p>
-          <CurrencyInput value={monthlySaving} onChange={this.handleMonthlySaving} />
+          <CurrencyInput
+            value={monthlySaving}
+            onChange={this.handleMonthlySaving}
+          />
 
           <p className="input-label">
             How much interest will you earn per year?
           </p>
           <SliderInput value={interest} onChange={this.handleInterest} />
+
+          <p className="input-label">How often is interest paid?</p>
+          <InterestPeriodSelect
+            value={interestPeriod}
+            onChange={this.handleInterestPeriod}
+          />
         </div>
         <div className="financial-display">
           <DisplayGraph
