@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       alreadySaved: 0,
       monthlySaving: 0,
+      interest: 4,
     };
   }
 
@@ -26,8 +27,14 @@ class App extends Component {
     this.setState({ monthlySaving: parseInt(value, 10) });
   }
 
+  handleInterest = (e) => {
+    const { target: { value } } = e;
+
+    this.setState({ interest: parseFloat(value) });
+  }
+
   render() {
-    const { alreadySaved, monthlySaving } = this.state;
+    const { alreadySaved, interest, monthlySaving } = this.state;
 
     return (
       <div className="App">
@@ -44,7 +51,7 @@ class App extends Component {
           <p className="input-label">
             How much interest will you earn per year?
           </p>
-          <SliderInput defaultValue={4} />
+          <SliderInput value={interest} onChange={this.handleInterest} />
         </div>
         <div className="financial-display">
           <DisplayGraph
