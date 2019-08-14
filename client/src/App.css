@@ -51,6 +51,7 @@ p {
 }
 
 .input-label {
+	clear: left;
 	margin-bottom: 4px;
 	margin-top: 12px;
 }
