@@ -46,7 +46,14 @@ class App extends Component {
     } = this.state;
 
     try {
-      const { data } = await axios.get('http://localhost:3001/calculation');
+      const { data } = await axios.get('http://localhost:3001/calculation', {
+        params: {
+          alreadySaved,
+          monthlySaving,
+          interest,
+          interestPeriod
+        }
+      });
 
       this.setState({
         loading: false,
