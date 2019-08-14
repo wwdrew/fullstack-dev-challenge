@@ -11,13 +11,8 @@ export default class CurrencyInput extends Component {
     };
   }
 
-  handleChange(e) {
-    const value = e.target.value;
-    this.setState({ value });
-  }
-
   render() {
-    const { defaultValue } = this.props;
+    const { defaultValue, onChange } = this.props;
     const { value } = this.state;
 
     return (
@@ -30,7 +25,7 @@ export default class CurrencyInput extends Component {
         <input
           type="text"
           value={value}
-          onChange={this.handleChange.bind(this)}
+          onChange={onChange}
         />
       </div>
     );
@@ -38,5 +33,6 @@ export default class CurrencyInput extends Component {
 }
 
 CurrencyInput.propTypes = {
-  defaultValue: PropTypes.number
+  defaultValue: PropTypes.number,
+  onChange: PropTypes.func.isRequired
 };
