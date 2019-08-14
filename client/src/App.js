@@ -11,6 +11,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      data: [],
       alreadySaved: 0,
       monthlySaving: 0,
       interest: 4,
@@ -36,6 +37,7 @@ class App extends Component {
 
   render() {
     const {
+      data,
       alreadySaved,
       interest,
       interestPeriod,
@@ -73,24 +75,7 @@ class App extends Component {
         </div>
         <div className="financial-display">
           <DisplayGraph
-            data={[
-              {
-                month: 1,
-                amount: 500
-              },
-              {
-                month: 2,
-                amount: 700
-              },
-              {
-                month: 3,
-                amount: 1000
-              },
-              {
-                month: 4,
-                amount: 1500
-              }
-            ]}
+            data={data}
           />
         </div>
       </div>
