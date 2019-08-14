@@ -2,7 +2,6 @@
 const MAX_MONTHS = 50;
 
 module.exports = function (req, res) {
-  console.log({queryParams: req.query});
   const { alreadySaved, monthlySaving, interest, interestPeriod } = req.query;
   let runningTotal = parseInt(alreadySaved, 10);
   const interestRate = parseFloat(interest) / 100;
