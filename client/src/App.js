@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import CurrencyInput from "./components/CurrencyInput";
 import SliderInput from "./components/SliderInput";
 import DisplayGraph from "./components/DisplayGraph";
@@ -11,6 +12,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      loading: true,
       data: [],
       alreadySaved: 0,
       monthlySaving: 0,
@@ -35,8 +37,33 @@ class App extends Component {
     this.setState({ interestPeriod });
   };
 
+  async getDataCalculation() {
+    const {
+      alreadySaved,
+      monthlySaving,
+      interest,
+      interestPeriod
+    } = this.state;
+
+    try {
+      const { data } = await axios.get('http://localhost:3001/calculation');
+
+      this.setState({
+        loading: false,
+        data
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  componentDidMount() {
+    this.getDataCalculation();
+  }
+
   render() {
     const {
+      loading,
       data,
       alreadySaved,
       interest,
@@ -74,9 +101,7 @@ class App extends Component {
           />
         </div>
         <div className="financial-display">
-          <DisplayGraph
-            data={data}
-          />
+          {loading ? <p>Loading...</p> : <DisplayGraph data={data} />}
         </div>
       </div>
     );
