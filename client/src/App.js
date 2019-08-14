@@ -15,20 +15,16 @@ class App extends Component {
     };
   }
 
-  handleAlreadySaved = (e) => {
-    const { target: { value } } = e;
-
-    this.setState({ alreadySaved: parseInt(value, 10) });
+  handleAlreadySaved = (alreadySaved) => {
+    this.setState({ alreadySaved });
   }
 
-  handleMonthlySaving = (e) => {
-    const { target: { value } } = e;
-
-    this.setState({ monthlySaving: parseInt(value, 10) });
+  handleMonthlySaving = (monthlySaving) => {
+    this.setState({ monthlySaving });
   }
 
-  handleInterest = (e) => {
-    const { target: { value } } = e;
+  handleInterest = ({ target }) => {
+    const { value } = target;
 
     this.setState({ interest: parseFloat(value) });
   }
